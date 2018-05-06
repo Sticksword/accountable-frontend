@@ -1,0 +1,6 @@
+{{#bs-form model=this onSubmit=(action send "createTeam") novalidate=true as |form|}}
+  {{form.element controlType="text" label="Team Name" placeholder="Enter a Team Name" property="teamName"}}
+  {{form.element controlType="text" label="Member IDs" placeholder="Enter all the member IDs" property="memberIDs"}}
+  {{form.element controlType="text" label="Buy In Amount:" placeholder="Enter member contribution" property="buyInAmount"}}
+  {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
+{{/bs-form}}

@@ -10,7 +10,7 @@ export default Controller.extend({
     signin: function() {
       const { username, password } = this.getProperties('username', 'password');
       this.get('simpleAuthManager').authenticate(username, password).then(() => {
-        this.transitionToRoute('teams');
+        this.transitionToRoute('groups');
       }, (err) => {
         alert('Error obtaining token: ' + err.responseText);
       });

@@ -7,8 +7,9 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('teams', function() {
-    this.route('show', { path: '/:team_id' });
+  this.route('groups', function() {
+    this.route('show', { path: '/:group_id' });
+    this.route('new');
   });
   this.route('player-profile');
   this.route('signin');

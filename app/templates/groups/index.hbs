@@ -4,10 +4,11 @@
     We hope you can make a few dollars off your unhealthy friends!
   </p>
 
+  {{#link-to "groups.new"}}Create a new Team{{/link-to}}
 
   {{#each model as |team|}}
     <article class="team">
-      <h3>{{#link-to "teams.show" team}}{{team.title}}{{/link-to}}</h3>
+      <h3>{{#link-to "groups.show" team}}{{team.title}}{{/link-to}}</h3>
       <div class="detail owner">
         <span>Owner:</span> {{team.owner}}
       </div>

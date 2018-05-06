@@ -44,14 +44,15 @@ export default Component.extend({
     var chartData = timeDays(yearAgo, now).map(function (dateElement) {
       return {
         date: dateElement,
-        count: (dateElement.getDay() !== 0 && dateElement.getDay() !== 6) ? Math.floor(Math.random() * 60) : Math.floor(Math.random() * 10)
+        // count: (dateElement.getDay() !== 0 && dateElement.getDay() !== 6) ? Math.floor(Math.random() * 60) : Math.floor(Math.random() * 10)
+        count: Math.floor(Math.random() * 50)
       };
     });
     var heatmap = this.calendarHeatmap()
       .data(chartData)
-      .selector('.heatmap')
+      .selector('.container')
       .tooltipEnabled(true)
-      .colorRange(['#f4f7f7', '#79a8a9'])
+      .colorRange(['#3a8354', '#e74141'])
       .onClick(function (data) {
         console.log('data', data);
       });
@@ -60,8 +61,8 @@ export default Component.extend({
 
   calendarHeatmap: function() {
     // defaults
-    var width = 750;
-    var height = 110;
+    var width = 800;
+    var height = 200;
     var legendWidth = 150;
     var selector = 'body';
     var SQUARE_LENGTH = 11;
@@ -73,7 +74,7 @@ export default Component.extend({
     var counterMap= {};
     var data = [];
     var mmax = null;
-    var colorRange = ['#D8E6E7', '#218380'];
+    var colorRange = ['#e74141', '#3a8354'];
     var tooltipEnabled = true;
     var tooltipUnit = 'contribution';
     var legendEnabled = true;
@@ -176,9 +177,12 @@ export default Component.extend({
       }
 
       // color range
-      var color = ((scale && scale.linear) || scaleLinear)()
-        .range(chart.colorRange())
-        .domain([0, mmax]);
+      // var color = ((scale && scale.linear) || scaleLinear)()
+      //   .range(chart.colorRange())
+      //   .domain([0, mmax]);
+      function color(count) {
+        return (count > 10) ? '#3a8354' : '#e74141';
+      }
 
       var tooltip;
       var dayRects;
@@ -315,7 +319,8 @@ export default Component.extend({
       function tooltipHTMLForDate(d) {
         var dateStr = moment(d).format('ddd, MMM Do YYYY');
         var count = countForDate(d);
-        return '<span><strong>' + (count ? count : locale.No) + ' ' + pluralizedTooltipUnit(count) + '</strong> ' + locale.on + ' ' + dateStr + '</span>';
+        // return '<span><strong>' + (count ? count : locale.No) + ' ' + pluralizedTooltipUnit(count) + '</strong> ' + locale.on + ' ' + dateStr + '</span>';
+        return '<span><strong>' + (count ? count : locale.No) + ' ' + '</strong> ' + locale.on + ' ' + dateStr + '</span>';
       }
 
       function countForDate(d) {

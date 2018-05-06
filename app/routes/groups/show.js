@@ -17,6 +17,7 @@ export default Authenticated.extend({
   },
 
   afterModel(params) {
+    console.log('afterModel for show');
     console.log(params);
   }
 });
