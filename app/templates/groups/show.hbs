@@ -1,19 +1,18 @@
-<h2>this is a team</h2>
-{{#bs-accordion as |acc|}}
-  {{#acc.item value="1" title="First item"}}
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur ea eos hic neque quia sequi sunt. Amet at atque corporis earum et fugiat illum magnam nisi sapiente voluptatem. Laudantium, quam?</p>
-  {{/acc.item}}
-  {{#acc.item value="2" as |aitem|}}
-    {{#aitem.title}}
-      <strong>Second</strong> <i>item</i>
-    {{/aitem.title}}
-    {{#aitem.body}}
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur ea eos hic neque quia sequi sunt. Amet at atque corporis earum et fugiat illum magnam nisi sapiente voluptatem. Laudantium, quam?</p>
-    {{/aitem.body}}
-  {{/acc.item}}
-  {{#acc.item value="3" title="Third item"}}
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur ea eos hic neque quia sequi sunt. Amet at atque corporis earum et fugiat illum magnam nisi sapiente voluptatem. Laudantium, quam?</p>
-  {{/acc.item}}
-{{/bs-accordion}}
+<div class="jumbotron" style="padding-left: 100px; padding-right: 100px">
+  <h1>Team Page</h1>
+  <hr>
+  <h3>Challenges</h3>
 
-{{log model.title}}
+  {{#bs-accordion as |acc|}}
+    {{#each model.challenges as |challenge|}}
+      {{log challenge}}
+      {{#acc.item title=challenge.challenge.name }}
+        {{challenge.challenge.description}}
+        <hr>
+        {{#bs-button type="success" onClick=(action send "verify")}}Verify Challenge{{/bs-button}}
+      {{/acc.item}}
+    {{/each}}
+  {{/bs-accordion}}
+
+</div>
+{{log model}}

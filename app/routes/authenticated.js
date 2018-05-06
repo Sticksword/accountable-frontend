@@ -1,8 +1,13 @@
 import Route from '@ember/routing/route';
 import { computed } from '@ember/object';
+import { inject as service } from "@ember/service";
 
 export default Route.extend({
-  permission: true,
+  simpleAuthManager: service(),
+
+  permission: computed('simpleAuthManager', function() {
+    return this.get('simpleAuthManager').isAuthenticated();
+  }),
 
   canAccessRoute: computed('permission', function() {
     return this.get('permission');
@@ -15,7 +20,7 @@ export default Route.extend({
     } else {
       // we are not ok
       console.log('we are not ok');
-      // this.transitionTo('login')
+      this.transitionTo('signin');
     }
   }
 });

@@ -13,6 +13,7 @@ Router.map(function() {
   });
   this.route('player-profile');
   this.route('signin');
+  this.route('signout');
 });
 
 export default Router;

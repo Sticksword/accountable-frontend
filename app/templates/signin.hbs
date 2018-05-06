@@ -1,5 +1,9 @@
-{{#bs-form model=this onSubmit=(action send "signin") as |form|}}
-  {{form.element controlType="username" label="Username" placeholder="Username" property="username" required=true}}
-  {{form.element controlType="password" label="Password" placeholder="Password" property="password" required=true helpText="Minimum 6 characters"}}
-  {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
-{{/bs-form}}
+<div class="jumbotron">
+  <div style="padding-left: 150px; padding-right: 150px">
+  {{#bs-form model=this onSubmit=(action send "signin") as |form|}}
+    {{form.element controlType="username" label="Username" placeholder="Username" property="username" required=true}}
+    {{form.element controlType="password" label="Password" placeholder="Password" property="password" required=true helpText="Minimum 6 characters"}}
+    {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
+  {{/bs-form}}
+  </div>
+</div>

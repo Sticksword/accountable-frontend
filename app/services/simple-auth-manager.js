@@ -14,14 +14,14 @@ export default Service.extend({
   },
 
   authenticate(username, password) {
-    let data = JSON.stringify({ "user": { "username": username, "password": password } });
     return this.get('ajax').request('http://e4105cf8.ngrok.io/api/session', {
       crossDomain: true,
       method: 'OPTIONS',
       contentType: "application/json;charset=UTF-8",
       data: { "user": { "username": username, "password": password } }
     }).then((result) => {
-      this.get('currentUser').updateUser({ username: username });
+      console.log(result);
+      this.get('currentUser').updateUser({ id: result.id, username: result.username });
       this.notifyPropertyChange('simpleAuthManager.currentUser.user');
     });
   },

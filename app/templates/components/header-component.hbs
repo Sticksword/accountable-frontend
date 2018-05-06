@@ -13,7 +13,11 @@
         {{#dd.toggle}}<span class="caret"></span>{{/dd.toggle}}
         {{#dd.menu as |ddm|}}
           {{#ddm.item}}{{#ddm.link-to "player-profile"}}Player Profile{{/ddm.link-to}}{{/ddm.item}}
-          {{#ddm.item}}{{#ddm.link-to "index"}}{{buttonText}}{{/ddm.link-to}}{{/ddm.item}}
+          {{#if isAuthenticated}}
+            {{#ddm.item}}{{#ddm.link-to "signout"}}Sign Out{{/ddm.link-to}}{{/ddm.item}}
+          {{else}}
+            {{#ddm.item}}{{#ddm.link-to "signin"}}Sign In{{/ddm.link-to}}{{/ddm.item}}
+          {{/if}}
         {{/dd.menu}}
       {{/nav.dropdown}}
     {{/navbar.nav}}

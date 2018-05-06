@@ -6,11 +6,11 @@
 
   {{#link-to "groups.new"}}Create a new Team{{/link-to}}
 
-  {{#each model as |team|}}
+  {{#each model as |group|}}
     <article class="team">
-      <h3>{{#link-to "groups.show" team}}{{team.title}}{{/link-to}}</h3>
+      <h3>{{#link-to "groups.show" group}}{{group.group_name}}{{/link-to}}</h3>
       <div class="detail owner">
-        <span>Owner:</span> {{team.owner}}
+        <span>Buy in: ${{group.buy_in}}</span>
       </div>
     </article>
   {{/each}}
