@@ -1,7 +1,11 @@
-import Route from '@ember/routing/route';
+import Authenticated from '../authenticated';
+import { inject as service } from "@ember/service";
 
-export default Route.extend({
+export default Authenticated.extend({
+  simpleAuthManager: service(),
+
   model() {
+    console.log(this.get('simpleAuthManager').currentUser);
     return [{
       id: 1,
       title: 'Grand Old Mansion',
@@ -15,5 +19,12 @@ export default Route.extend({
       title: 'Downtown Charm',
       owner: 'Violet Beauregarde',
     }];
+    // return this.get('store').query('group', {
+    //   filter: {
+    //     username: this.get('simpleAuthManager').currentUser
+    //   }
+    // }).then(function(groups) {
+    //   // Do something with `peters`
+    // });
   }
 });

@@ -9,4 +9,9 @@ export default Authenticated.extend({
   permission: computed('simpleAuthManager', function() {
     return this.get('simpleAuthManager').isAuthenticated();
   }),
+
+  model() {
+    console.log(this.get('simpleAuthManager').currentUser);
+    return this.get('simpleAuthManager').currentUser;
+  }
 });
