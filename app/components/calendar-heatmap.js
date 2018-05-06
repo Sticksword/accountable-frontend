@@ -181,7 +181,7 @@ export default Component.extend({
       //   .range(chart.colorRange())
       //   .domain([0, mmax]);
       function color(count) {
-        return (count > 10) ? '#3a8354' : '#e74141';
+        return (count > 10) ? '#56d777' : '#dc5953';
       }
 
       var tooltip;

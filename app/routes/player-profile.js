@@ -6,7 +6,7 @@ import { computed } from '@ember/object';
 export default Authenticated.extend({
   simpleAuthManager: service(),
 
-  permission: computed('simpleAuthManager.currentUser.user', function() {
+  permission: computed('simpleAuthManager', function() {
     return this.get('simpleAuthManager').isAuthenticated();
   }),
 });
