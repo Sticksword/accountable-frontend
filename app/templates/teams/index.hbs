@@ -1,0 +1,16 @@
+<div class="jumbotron text-center">
+  <h2>Welcome!</h2>
+  <p>
+    We hope you can make a few dollars off your unhealthy friends!
+  </p>
+
+
+  {{#each model as |team|}}
+    <article class="team">
+      <h3>{{#link-to "teams.show" team}}{{team.title}}{{/link-to}}</h3>
+      <div class="detail owner">
+        <span>Owner:</span> {{team.owner}}
+      </div>
+    </article>
+  {{/each}}
+</div>

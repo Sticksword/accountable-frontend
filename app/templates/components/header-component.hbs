@@ -1,0 +1,21 @@
+{{#bs-navbar type=(if inverse 'inverse') fluid=fluid collapsed=collapsed onCollapse=(action (mut collapsed) true) onExpand=(action (mut collapsed) false) as |navbar|}}
+  <div class="navbar-header">
+    {{navbar.toggle}}
+    {{#link-to "index" class="navbar-brand"}}Keep Up{{/link-to}}
+  </div>
+  {{#navbar.content}}
+    {{#navbar.nav as |nav|}}
+      {{#nav.item}}{{#nav.link-to "teams"}}Teams{{/nav.link-to}}{{/nav.item}}
+    {{/navbar.nav}}
+
+    {{#navbar.nav class="navbar-right" as |nav|}}
+      {{#nav.dropdown as |dd|}}
+        {{#dd.toggle}}<span class="caret"></span>{{/dd.toggle}}
+        {{#dd.menu as |ddm|}}
+          {{#ddm.item}}{{#ddm.link-to "player-profile"}}Player Profile{{/ddm.link-to}}{{/ddm.item}}
+          {{#ddm.item}}{{#ddm.link-to "index"}}{{buttonText}}{{/ddm.link-to}}{{/ddm.item}}
+        {{/dd.menu}}
+      {{/nav.dropdown}}
+    {{/navbar.nav}}
+  {{/navbar.content}}
+{{/bs-navbar}}
